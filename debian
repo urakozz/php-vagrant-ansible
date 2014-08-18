@@ -1,0 +1,223 @@
+echo 'deb http://packages.dotdeb.org wheezy-php55 all' | sudo tee -a /etc/apt/sources.list
+echo 'deb-src http://packages.dotdeb.org wheezy-php55 all' | sudo tee -a /etc/apt/sources.list
+gpg --keyserver keys.gnupg.net --recv-key 89DF5277
+gpg -a --export 89DF5277 | sudo apt-key add -
+sudo aptitude update
+
+
+or
+
+sudo apt-get -y install nano build-essential checkinstall zip
+
+wget -Ophp-5.5.15.tar.bz2 "http://us3.php.net/get/php-5.5.15.tar.bz2/from/this/mirror"
+tar jxf php-5.5.15.tar.bz2
+cd php-5.5.15
+
+sudo apt-get install pkg-config libxml2-dev libssl-dev libzip2 libbz2-dev libcurl4-openssl-dev libjpeg-dev libpng-dev libfreetype6-dev libicu-dev libmcrypt-dev libxslt1-dev openldap-devel
+
+./configure \
+        --enable-fpm \
+        --enable-pdo \
+        --with-pdo-mysql \
+        --enable-intl \
+        --enable-sockets \
+        --enable-exif \
+        --enable-soap \
+        --enable-ftp \
+        --enable-wddx \
+        --enable-pcntl \
+        --enable-soap \
+        --enable-bcmath \
+        --enable-mbstring \
+        --enable-dba \
+        --enable-gd-native-ttf \
+        --enable-zip \
+        --enable-calendar \
+        --with-mysql \
+        --with-mysqli \
+        --with-pdo-sqlite \
+        --with-iconv \
+        --with-zlib \
+        --with-bz2 \
+        --with-gettext \
+        --with-xmlrpc \
+        --with-openssl \
+        --with-mhash \
+        --with-mcrypt \
+        --with-xsl \
+        --with-curl \
+        --with-pcre-regex \
+        --with-gd \
+        --with-freetype-dir=/usr \
+        --with-jpeg-dir=/usr \
+        --with-png-dir=/usr \
+        --with-ldap \
+        --with-pear \
+        --with-fpm-user=www-data \
+        --with-fpm-group=www-data \
+        --with-config-file-path=/etc/php5/ \
+        --with-config-file-scan-dir=/etc/php5/conf.d/ \
+        --with-libdir=lib/x86_64-linux-gnu
+
+
+
+
+sudo apt-get build-dep php5 php5-fpm
+
+all deps:
+apache2-prefork-dev apache2-utils apache2.2-bin apache2.2-common autoconf automake autotools-dev bison chrpath diffstat firebird-dev
+  firebird2.5-common firebird2.5-common-doc flex fontconfig-config freetds-common freetds-dev hardening-wrapper libaio1 libapr1
+  libapr1-dev libaprutil1 libaprutil1-dbd-sqlite3 libaprutil1-dev libaprutil1-ldap libaspell-dev libaspell15 libbison-dev
+  libc-client2007e libc-client2007e-dev libct4 libdb-dev libdb5.1-dev libdbd-mysql-perl libdbi-perl libelf1 libenchant-dev libenchant1c2a
+  libevent-core-2.0-5 libevent-dev libevent-extra-2.0-5 libevent-openssl-2.0-5 libevent-pthreads-2.0-5 libexpat1-dev libfbclient2
+  libfontconfig1 libfontconfig1-dev libgd2-xpm libgd2-xpm-dev libglib2.0-bin libglib2.0-dev libgmp-dev libgmp3-dev libgmpxx4ldbl
+  libhunspell-1.3-0 libib-util libltdl-dev libltdl7 libmagic-dev libmhash-dev libmhash2 libmysqlclient-dev libmysqlclient18 libodbc1
+  libonig-dev libonig2 libpam0g-dev libpcre3-dev libpcrecpp0 libperl-dev libperl5.14 libpq-dev libpq5 libpspell-dev libpthread-stubs0
+  libpthread-stubs0-dev libqdbm-dev libqdbm14 librecode-dev librecode0 libsasl2-dev libsensors4 libsensors4-dev libsnmp-base libsnmp-dev
+  libsnmp-perl libsnmp15 libsqlite3-dev libsybdb5 libtidy-0.99-0 libtidy-dev libtool libwrap0-dev libx11-dev libxau-dev libxcb1-dev
+  libxdmcp-dev libxmltok1 libxmltok1-dev libxpm-dev libxpm4 locales-all mlock mysql-client-5.5 mysql-common mysql-server mysql-server-5.5
+  mysql-server-core-5.5 odbcinst odbcinst1debian2 quilt re2c ttf-dejavu-core unixodbc unixodbc-dev uuid-dev x11proto-core-dev
+  x11proto-input-dev x11proto-kb-dev xorg-sgml-doctools xtrans-dev
+
+
+apt-get source php5
+
+sudo dpkg-buildpackage -rfakeroot
+sudo DEB_BUILD_OPTIONS=nocheck dpkg-buildpackage -rfakeroot
+sudo checkinstall --install=no
+
+exts:
+phpize --clean
+phpize
+./configure
+make
+make install
+
+original config php 5.4
+./configure \
+		--prefix=/usr --with-apxs2=/usr/bin/apxs2 \
+		--with-config-file-path=/etc/php5/apache2 \
+		--with-config-file-scan-dir=/etc/php5/apache2/conf.d \
+		--build=x86_64-linux-gnu --host=x86_64-linux-gnu \
+		--sysconfdir=/etc \
+		--localstatedir=/var \
+		--mandir=/usr/share/man \
+		--disable-debug \
+		--with-regex=php \
+		--disable-rpath \
+		--disable-static \
+		--with-pic \
+		--with-layout=GNU \
+		--with-pear=/usr/share/php \
+		--enable-calendar \
+		--enable-sysvsem \
+		--enable-sysvshm \
+		--enable-sysvmsg \
+		--enable-bcmath \
+		--with-bz2 \
+		--enable-ctype \
+		--with-db4 \
+		--with-qdbm=/usr \
+		--without-gdbm \
+		--with-iconv \
+		--enable-exif \
+		--enable-ftp \
+		--with-gettext \
+		--enable-mbstring \
+		--with-onig=/usr \
+		--with-pcre-regex=/usr \
+		--enable-shmop \
+		--enable-sockets \
+		--enable-wddx \
+		--with-libxml-dir=/usr \
+		--with-zlib \
+		--with-kerberos=/usr \
+		--with-openssl=/usr \
+		--enable-soap \
+		--enable-zip \
+		--with-mhash=yes \
+		--with-system-tzdata \
+		--with-mysql-sock=/var/run/mysqld/mysqld.sock \
+		--without-mm \
+		--with-curl=shared,/usr \
+		--with-enchant=shared,/usr \
+		--with-zlib-dir=/usr \
+		--with-gd=shared,/usr --enable-gd-native-ttf \
+		--with-gmp=shared,/usr \
+		--with-jpeg-dir=shared,/usr \
+		--with-xpm-dir=shared,/usr/X11R6 \
+		--with-png-dir=shared,/usr \
+		--with-freetype-dir=shared,/usr \
+		--with-imap=shared,/usr \
+		--with-imap-ssl \
+		--enable-intl=shared \
+		--without-t1lib \
+		--with-ldap=shared,/usr \
+		--with-ldap-sasl=/usr \
+		--with-mcrypt=shared,/usr \
+		--with-mysql=shared,/usr \
+		--with-mysqli=shared,/usr/bin/mysql_config \
+		--with-pspell=shared,/usr \
+		--with-unixODBC=shared,/usr \
+		--with-recode=shared,/usr \
+		--with-xsl=shared,/usr \
+		--with-snmp=shared,/usr \
+		--with-sqlite3=shared,/usr \
+		--with-mssql=shared,/usr \
+		--with-tidy=shared,/usr \
+		--with-xmlrpc=shared \
+		--with-pgsql=shared,/usr PGSQL_INCLUDE=`pg_config --includedir` \
+		--enable-pdo=shared \
+		--without-pdo-dblib \
+		--with-pdo-mysql=shared,/usr \
+		--with-pdo-odbc=shared,unixODBC,/usr \
+		--with-pdo-pgsql=shared,/usr/bin/pg_config \
+		--with-pdo-sqlite=shared,/usr \
+		--with-pdo-dblib=shared,/usr \
+		--with-interbase=shared,/usr --with-pdo-firebird=shared,/usr
+
+
+configure php5.5
+./configure \
+		--prefix=/usr --with-apxs2=/usr/bin/apxs2 \
+		--with-config-file-path=/etc/php5/apache2 \
+		--with-config-file-scan-dir=/etc/php5/apache2/conf.d \
+		--build=x86_64-linux-gnu --host=x86_64-linux-gnu --sysconfdir=/etc --localstatedir=/var --mandir=/usr/share/man --disable-debug --with-regex=php --disable-rpath --disable-static --with-pic --with-layout=GNU --with-pear=/usr/share/php --enable-calendar --enable-sysvsem --enable-sysvshm --enable-sysvmsg --enable-bcmath --with-bz2 --enable-ctype --with-db4 --with-qdbm=/usr --without-gdbm --with-iconv --enable-exif --enable-ftp --with-gettext --enable-mbstring --with-onig=/usr --with-pcre-regex --enable-shmop --enable-sockets --enable-wddx --with-libxml-dir=/usr --with-zlib --with-kerberos=/usr --with-openssl=/usr --enable-soap --enable-zip --with-mhash=yes --with-system-tzdata --with-mysql-sock=/var/run/mysqld/mysqld.sock --enable-dtrace \
+		--without-mm \
+		--with-curl=shared,/usr \
+		--with-enchant=shared,/usr \
+		--with-zlib-dir=/usr \
+		--with-gd=shared --enable-gd-native-ttf \
+		--with-gmp=shared,/usr \
+		--with-jpeg-dir=shared,/usr \
+		--with-xpm-dir=shared,/usr/X11R6 \
+		--with-png-dir=shared,/usr \
+		--with-freetype-dir=shared,/usr \
+	  --with-vpx-dir=shared,/usr \
+		--with-imap=shared,/usr \
+		--with-imap-ssl \
+		--enable-intl=shared \
+		--with-t1lib=shared,/usr \
+		--with-ldap=shared,/usr \
+		--with-ldap-sasl=/usr \
+		--with-mcrypt=shared,/usr \
+		--with-mysql=shared,/usr \
+		--with-mysqli=shared,/usr/bin/mysql_config \
+		--with-pspell=shared,/usr \
+		--with-unixODBC=shared,/usr \
+		--with-recode=shared,/usr \
+		--with-xsl=shared,/usr \
+		--with-snmp=shared,/usr \
+		--with-sqlite3=shared,/usr \
+		--with-mssql=shared,/usr \
+		--with-tidy=shared,/usr \
+		--with-xmlrpc=shared \
+		--with-pgsql=shared,/usr PGSQL_INCLUDE=`pg_config --includedir` \
+		--enable-pdo=shared \
+		--without-pdo-dblib \
+		--with-pdo-mysql=shared,/usr \
+		--with-pdo-odbc=shared,unixODBC,/usr \
+		--with-pdo-pgsql=shared,/usr/bin/pg_config \
+		--with-pdo-sqlite=shared,/usr \
+		--with-pdo-dblib=shared,/usr \
+		--with-interbase=shared,/usr --with-pdo-firebird=shared,/usr

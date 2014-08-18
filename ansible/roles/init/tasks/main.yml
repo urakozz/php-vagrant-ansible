@@ -1,0 +1,81 @@
+---
+- name: Rename old repos
+  shell: mv /etc/apt/sources.list /etc/apt/sources.list.original
+
+- name: Touch File
+  shell: touch /etc/apt/sources.list
+
+- name: Install Yandex Repos
+  shell: echo '{{ item }}' >> /etc/apt/sources.list
+  with_items:
+    - deb http://mirror.yandex.ru/ubuntu/ precise main restricted
+    - deb-src http://mirror.yandex.ru/ubuntu/ precise main restricted
+    - deb http://mirror.yandex.ru/ubuntu/ precise-updates main restricted
+    - deb-src http://mirror.yandex.ru/ubuntu/ precise-updates main restricted
+    - deb http://mirror.yandex.ru/ubuntu/ precise universe
+    - deb-src http://mirror.yandex.ru/ubuntu/ precise universe
+    - deb http://mirror.yandex.ru/ubuntu/ precise-updates universe
+    - deb-src http://mirror.yandex.ru/ubuntu/ precise-updates universe
+    - deb http://mirror.yandex.ru/ubuntu/ precise multiverse
+    - deb-src http://mirror.yandex.ru/ubuntu/ precise multiverse
+    - deb http://mirror.yandex.ru/ubuntu/ precise-updates multiverse
+    - deb-src http://mirror.yandex.ru/ubuntu/ precise-updates multiverse
+    - deb http://mirror.yandex.ru/ubuntu/ precise-backports main restricted universe multiverse
+    - deb-src http://mirror.yandex.ru/ubuntu/ precise-backports main restricted universe multiverse
+
+    - deb http://security.ubuntu.com/ubuntu precise-security main restricted
+    - deb-src http://security.ubuntu.com/ubuntu precise-security main restricted
+    - deb http://security.ubuntu.com/ubuntu precise-security universe
+    - deb-src http://security.ubuntu.com/ubuntu precise-security universe
+    - deb http://security.ubuntu.com/ubuntu precise-security multiverse
+    - deb-src http://security.ubuntu.com/ubuntu precise-security multiverse
+
+- name: Update apt
+  apt: update_cache=yes
+  
+
+
+- name: Install System Packages
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - git
+    - curl
+    - wget
+    - zip
+    - unzip
+    - python-software-properties
+    - software-properties-common
+    - python-apt
+
+
+- name: install dependecies
+  apt: pkg={{item}}
+  with_items:
+    - libonig2
+    - libqdbm14
+    - libedit2
+    - libc6
+    - libjs-jquery
+    - libmysqlclient18
+    - libvpx1
+    - libgd2-xpm-dev
+    - libgearman-dev
+    - libtiff4
+    - libtiff-dev
+    - libxt-dev
+    - libvpx-dev
+    - libsasl2-dev
+    - gearman-tools
+    - libpq5
+    - libtokyocabinet8
+    - shtool
+    - libgcc1
+    - memcached
+    - autoconf
+    - automake
+    - libtool
+
+- name: Install Extra Packages
+  apt: pkg={{ item }} state=latest
+  with_items: sys_packages
+

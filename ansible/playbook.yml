@@ -1,0 +1,8 @@
+---
+- hosts: all
+  sudo: true
+  vars:
+    sys_packages: ["nano"]
+  roles:
+    - init
+    - php

@@ -1,0 +1,22 @@
+sudo yum install git gcc gcc-c++ make install zlib-devel readline-devel libxml12-devel openssl-devel libmcrypt-devel curl-devel bzip2-devel libxml2 libxml2-devel libxslt libxslt-devel
+
+sudo rpm -ivh http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+
+wget -Ophp-5.5.15.tar.bz2 "http://us3.php.net/get/php-5.5.15.tar.bz2/from/this/mirror"
+tar jxf php-5.5.15.tar.bz2
+cd php-5.5.15
+
+sudo yum install libjpeg libjpeg-devel libpng libpng-devel freetype-devel libicu-devel
+
+./configure --prefix=/usr --enable-maintainer-zts --with-pear \
+--with-config-file-path=/etc --with-readline --with-mcrypt \
+--with-zlib --enable-mbstring --with-curl --with-bz2 \
+--enable-zip --enable-sockets --enable-sysvsem --enable-sysvshm \
+--with-mhash --with-pcre-regex --with-gettext --enable-bcmath \
+--enable-libxml --enable-json --with-openssl --enable-pcntl \
+--enable-intl --with-mysql --with-pdo-mysql --enable-cgi --with-gd \
+--with-libdir=lib64
+
+
+make
+sudo make install
