@@ -1,0 +1,18 @@
+---
+
+- name: Install mysql client and server
+  apt: pkg={{item}} state=present
+  with_items:
+    - mysql-client
+    - mysql-server
+
+- name: Install python-mysqldb
+  apt: pkg=python-mysqldb state=present
+
+- name: create db 'intitial'
+  mysql_db: db=initial state=present
+
+- name: create user 'root' with password 'root'
+  mysql_user: state=present name=root password=root
+
+
