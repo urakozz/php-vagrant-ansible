@@ -9,10 +9,10 @@
 - name: Install python-mysqldb
   apt: pkg=python-mysqldb state=present
 
-- name: create db 'intitial'
-  mysql_db: db=initial state=present
+- name: create db
+  mysql_db: db={{db}} state=present
 
-- name: create user 'root' with password 'root'
-  mysql_user: state=present name=root password=root
+- name: create user
+  mysql_user: state=present name={{user}} password={{password}}
 
 
