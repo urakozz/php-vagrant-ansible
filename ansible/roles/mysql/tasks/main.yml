@@ -10,7 +10,8 @@
   apt: pkg=python-mysqldb state=present
 
 - name: create db
-  mysql_db: db={{db}} state=present
+  mysql_db: db={{item}} state=present
+  with_items: db
 
 - name: create user
   mysql_user: state=present name={{user}} password={{password}}
