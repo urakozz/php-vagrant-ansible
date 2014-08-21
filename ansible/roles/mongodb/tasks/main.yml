@@ -9,3 +9,4 @@
 
 - name: Inatall MongoDB
   apt: name=mongodb-org
+  when: !travis
