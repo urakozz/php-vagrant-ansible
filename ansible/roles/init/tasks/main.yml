@@ -33,9 +33,6 @@
 - name: Update apt
   apt: update_cache=yes
 
-- name: Upgrade
-  apt: upgrade=dist
-
 - name: Generate Locales
   shell: locale-gen {{item}}
   with_items:

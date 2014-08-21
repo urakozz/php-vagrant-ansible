@@ -27,6 +27,7 @@
 
 - name: Install libmemcached11
   shell: dpkg -i php-precise-debs/debs/ubuntu_12.04/libmemcached11/*.deb
+  ignore_errors: yes
 
 - name: Install gearman
   shell: dpkg -i php-precise-debs/debs/ubuntu_12.04/gearman/*.deb
