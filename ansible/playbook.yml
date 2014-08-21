@@ -2,7 +2,7 @@
 - hosts: all
   sudo: true
   vars:
-    travis: false
+    travis: 0
     sys_packages: ["nano"]
   roles:
     - init

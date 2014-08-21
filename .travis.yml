@@ -10,4 +10,4 @@ install:
 script:
   - echo localhost > inventory
   - ansible-playbook -i inventory --syntax-check ansible/playbook.yml
-  - ansible-playbook -i inventory --connection=local --sudo -vvvv -e travis=true ansible/playbook.yml
+  - ansible-playbook -i inventory --connection=local --sudo -vvvv -e travis=1 ansible/playbook.yml
