@@ -26,8 +26,7 @@
   shell: dpkg -i php-precise-debs/debs/ubuntu_12.04/libgd3/*.deb
 
 - name: Install libmemcached11
-  shell: dpkg -i php-precise-debs/debs/ubuntu_12.04/libmemcached11/*.deb
-  when: travis is not defined
+  shell: dpkg -i  --auto-deconfigure php-precise-debs/debs/ubuntu_12.04/libmemcached11/*.deb
 
 - name: Install gearman
   shell: dpkg -i php-precise-debs/debs/ubuntu_12.04/gearman/*.deb
