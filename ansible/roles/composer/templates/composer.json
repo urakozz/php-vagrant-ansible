@@ -1,0 +1,17 @@
+{
+  "name": "kozz/test",
+  "license": "MIT",
+
+  "authors": [
+    {
+      "name": "Yury Kozyrev",
+      "email": "urakozz@gmail.com",
+      "homepage": "https://github.com/urakozz"
+    }
+  ],
+
+  "require": {
+    "php": ">=5.5.15",
+    "kozz/email-address-parser": "*"
+  }
+}

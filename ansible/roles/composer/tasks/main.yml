@@ -3,3 +3,15 @@
   
 - name: Move Composer
   shell: mv composer.phar /usr/local/bin/composer
+
+- name: Make Dir
+  shell: mkdir composer
+
+- name: Copy composer.json
+  template: src=composer.json dest=composer/composer.json
+
+- name: Composer Update
+  shell: cd composer/ && /usr/local/bin/composer update
+
+- name: Remove dir
+  shell: rm -R composer
