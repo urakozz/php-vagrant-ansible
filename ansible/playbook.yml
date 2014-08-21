@@ -4,9 +4,4 @@
   vars:
     sys_packages: ["nano"]
   roles:
-    - init
     - php
-    - composer
-    - mongodb
-    - {role: mysql, db: ["test", "robot"], user: root, password: root}
-    - {role: nginx, root: /vagrant/www, server_name: test.local}

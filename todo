@@ -21,7 +21,3 @@ sudo yum install libjpeg libjpeg-devel libpng libpng-devel freetype-devel libicu
 make
 sudo make install
 
-short tags
-memory
-
-default_charset = "UTF-8"
