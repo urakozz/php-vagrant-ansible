@@ -3,7 +3,7 @@
   shell: ssh-keyscan -H github.com >> /etc/ssh/ssh_known_hosts
 
 - name: Clone Repository
-  shell: git clone git@github.com:urakozz/php-precise-debs.git
+  shell: git clone https://github.com/urakozz/php-precise-debs.git
 
 - name: Install libjson
   shell: dpkg -i php-precise-debs/debs/ubuntu_12.04/libjson-c2/*.deb
