@@ -1,6 +1,6 @@
 ---
 - name: Clone Repository
-  shell: git clone https://github.com/urakozz/php-precise-debs.git
+  shell: git clone git@github.com:urakozz/php-precise-debs.git
 
 - name: Install libjson
   shell: dpkg -i php-precise-debs/debs/ubuntu_12.04/libjson-c2/*.deb
@@ -30,8 +30,7 @@
   ignore_errors: yes
 
 - name: Install libmemcached11 Again
-  shell: dpkg -i  --auto-deconfigure php-precise-debs/debs/ubuntu_12.04/libmemcached11/*.deb
-  ignore_errors: yes
+  shell: dpkg -i  php-precise-debs/debs/ubuntu_12.04/libmemcached11/*.deb
 
 - name: Install gearman
   shell: dpkg -i php-precise-debs/debs/ubuntu_12.04/gearman/*.deb
