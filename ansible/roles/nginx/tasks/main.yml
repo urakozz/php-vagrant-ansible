@@ -7,4 +7,7 @@
 
 - name: Symlink
   shell: ln -s /etc/nginx/sites-available/{{server_name}}.conf /etc/nginx/sites-enabled/{{server_name}}.conf
+
+- name: nginx config updates
+  shell: sed -i 's/sendfile on;/sendfile off;/g' /etc/nginx/nginx.conf
   notify: restart nginx
