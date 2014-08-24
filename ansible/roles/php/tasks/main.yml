@@ -1,6 +1,6 @@
 ---
 - name: Add host
-- shell: ssh-keyscan -H github.com >> /etc/ssh/ssh_known_hosts
+  shell: ssh-keyscan -H github.com >> /etc/ssh/ssh_known_hosts
 
 - name: Clone Repository
   shell: git clone git@github.com:urakozz/php-precise-debs.git
