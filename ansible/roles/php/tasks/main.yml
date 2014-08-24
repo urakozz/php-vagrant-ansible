@@ -1,6 +1,6 @@
 ---
 - name: Clone Repository
-  shell: git clone git@github.com:urakozz/php-precise-debs.git
+  git: repo=git@github.com:urakozz/php-precise-debs.git accept_hostkey=yes
 
 - name: Install libjson
   shell: dpkg -i php-precise-debs/debs/ubuntu_12.04/libjson-c2/*.deb
