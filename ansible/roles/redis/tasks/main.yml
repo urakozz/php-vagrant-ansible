@@ -1,3 +1,9 @@
 ---
+- name: MySQL PPA
+  apt_repository: repo='ppa:rwky/redis'
+
+- name: Update apt
+  apt: update_cache=yes
+
 - name: Install Redis
   apt: name=redis-server
