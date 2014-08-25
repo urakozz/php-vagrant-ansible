@@ -83,3 +83,6 @@
     - {file: /etc/php5/fpm/php.ini, search: "memory_limit = 128M",  replace: "memory_limit = -1"}
     - {file: /etc/php5/fpm/php.ini, search: ';default_charset = "UTF-8"', replace: 'default_charset = "UTF-8"'}
     - {file: /etc/php5/cli/php.ini, search: ';default_charset = "UTF-8"', replace: 'default_charset = "UTF-8"'}
+    
+- name: php fpm restart
+  shell: service php5-fpm restart
