@@ -78,7 +78,9 @@
     - autoconf
     - automake
     - libtool
-    - locales-all
+    - language-pack-de
+    - language-pack-ru
+    
 
 - name: Install Extra Packages
   apt: pkg={{ item }} state=latest
