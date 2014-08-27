@@ -3,7 +3,7 @@ PHP Ansible Vagrant
 
 [![Build Status](https://travis-ci.org/urakozz/php-vagrant-ansible.svg?branch=master)](https://travis-ci.org/urakozz/php-vagrant-ansible)
 
-Build of Ubuntu 12.04 with PHP 5.5.15 from .deb packages
+Build of Ubuntu 12.04.4 with PHP 5.5.16 from .deb packages
 --------------------------------------------------------
 
 All .deb packages are there: [https://github.com/urakozz/php-precise-debs](https://github.com/urakozz/php-precise-debs)
