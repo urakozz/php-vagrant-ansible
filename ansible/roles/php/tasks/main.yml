@@ -60,15 +60,6 @@
     - php5-redis
     - php5-mongo
 
-- name: Mongo Ext ini
-  shell: echo "extension=mongo.so" | sudo tee /etc/php5/mods-available/mongo.ini
-
-- name: Mongo Ext Symlink cli
-  shell: ln -s /etc/php5/mods-available/mongo.ini /etc/php5/cli/conf.d/20-mongo.ini
-
-- name: Mongo Ext Symlink fpm
-  shell: ln -s /etc/php5/mods-available/mongo.ini /etc/php5/fpm/conf.d/20-mongo.ini
-
 - name: www-data to sudo
   user: name=www-data state=present groups=sudo append=yes
 
