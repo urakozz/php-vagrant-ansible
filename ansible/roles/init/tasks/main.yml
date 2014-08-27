@@ -80,6 +80,7 @@
     - libtool
     - language-pack-de
     - language-pack-ru
+    - libpcre3-dev
     
 
 - name: Install Extra Packages
