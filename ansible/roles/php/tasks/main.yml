@@ -60,9 +60,6 @@
     - php5-redis
     - php5-mongo
 
-- name: Remove repository
-  shell: rm -R php-precise-debs/
-
 - name: Mongo Ext ini
   shell: echo "extension=mongo.so" | sudo tee /etc/php5/mods-available/mongo.ini
 
