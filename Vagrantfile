@@ -10,10 +10,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network "private_network", ip: "192.168.56.110"
   config.vm.synced_folder ".", "/vagrant", :owner=> 'vagrant', :group=>'www-data', :mount_options => ["dmode=775,fmode=775"]
 
-  config.vm.provision "ansible" do |ansible|
-    ansible.playbook = "ansible/playbook.yml"
-    ansible.verbose = true
-  end
+  #config.vm.provision "ansible" do |ansible|
+  #  ansible.playbook = "ansible/playbook.yml"
+  #  ansible.verbose = true
+  #end
+  config.vm.provision :shell, path: "ansible/bootstrap.sh"
 
   config.ssh.forward_agent = true
 
