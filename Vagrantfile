@@ -14,7 +14,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #  ansible.playbook = "ansible/playbook.yml"
   #  ansible.verbose = true
   #end
-  config.vm.provision :shell, path: "ansible/bootstrap.sh"
+  config.vm.provision :shell, path: "ansible/provision.sh"
 
   config.ssh.forward_agent = true
 

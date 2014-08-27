@@ -65,7 +65,7 @@
     - libgd2-xpm-dev
     - libgearman-dev
     - libtiff4
-    - libtiff-dev
+    - libtiff4-dev
     - libxt-dev
     - libvpx-dev
     - libsasl2-dev
