@@ -10,21 +10,22 @@ All .deb packages are there: [https://github.com/urakozz/php-precise-debs](https
 
 ## Installation
 
-1. Download and install [VirtualBox](https://www.virtualbox.org/wiki/Downloads), [Ansible](http://docs.ansible.com/intro_installation.html) and [Vagrant](http://www.vagrantup.com/downloads.html)
+1. Download and install [VirtualBox](https://www.virtualbox.org/wiki/Downloads) and [Vagrant](http://www.vagrantup.com/downloads.html)
 2. Clone this repository `git clone https://github.com/urakozz/php-vagrant-ansible.git`
 3. Move to its directory `cd php-vagrant-ansible`
-4. You can modify ip/hostname in `Vagrantfile` and mysql settings in `ansible/playbook.yml`
+4. You can modify ip/hostname in `Vagrantfile` and mysql/nginx settings in `ansible/playbook.yml`
 5. Run `vagrant up`
 
 ## Misc
 
 #### Includes
-  - PHP 5.5.15
+  - PHP 5.5.16
   - php-fpm
   - Composer
   - Nginx
-  - MySQL 5.5
+  - MySQL 5.6
   - MongoDB 2.6
+  - Redis 2.8
   - Memcached
 
  
