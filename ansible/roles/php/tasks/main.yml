@@ -60,9 +60,6 @@
     - php5-redis
     - php5-mongo
 
-- name: www-data to sudo
-  user: name=www-data state=present groups=sudo append=yes
-
 - name: php config updates
   shell: sed -i 's/{{item.search}}/{{item.replace}}/g' {{item.file}}
   with_items:
