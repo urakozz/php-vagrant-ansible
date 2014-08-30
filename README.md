@@ -3,10 +3,8 @@ PHP Ansible Vagrant
 
 [![Build Status](https://travis-ci.org/urakozz/php-vagrant-ansible.svg?branch=master)](https://travis-ci.org/urakozz/php-vagrant-ansible)
 
-Build of Ubuntu 12.04.4 with PHP 5.5.16 from .deb packages
---------------------------------------------------------
-
-All .deb packages are there: [https://github.com/urakozz/php-precise-debs](https://github.com/urakozz/php-precise-debs)
+Build of Ubuntu 14.04 with PHP 5.6
+----------------------------------
 
 ## Installation
 
@@ -19,11 +17,11 @@ All .deb packages are there: [https://github.com/urakozz/php-precise-debs](https
 ## Misc
 
 #### Includes
-  - PHP 5.5.16
+  - PHP 5.6.0
   - php-fpm
   - Composer
   - Nginx
-  - MySQL 5.6
+  - MySQL (Percona Server) 5.6
   - MongoDB 2.6
   - Redis 2.8
   - Memcached
@@ -46,6 +44,4 @@ All .deb packages are there: [https://github.com/urakozz/php-precise-debs](https
   - php5-redis
   - php5-mongo
   - php-pear
-
-
 
