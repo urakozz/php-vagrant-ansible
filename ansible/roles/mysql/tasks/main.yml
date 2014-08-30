@@ -1,6 +1,9 @@
 ---
-- name: MySQL PPA
-  apt_repository: repo='ppa:ondrej/mysql-5.6'
+- name: Percona key
+  shell: apt-key adv --keyserver keys.gnupg.net --recv-keys 1C4CBDCDCD2EFD2A
+
+- name: Add repository
+  shell: echo 'deb http://repo.percona.com/apt {{os_name}} main' | sudo tee /etc/apt/sources.list.d/percona.list
 
 - name: Update apt
   apt: update_cache=yes
@@ -8,8 +11,8 @@
 - name: Install mysql client and server
   apt: pkg={{item}} state=present
   with_items:
-    - mysql-client
-    - mysql-server
+    - percona-server-server-5.6
+    - percona-server-client-5.6
 
 - name: Install python-mysqldb
   apt: pkg=python-mysqldb state=present
@@ -20,4 +23,3 @@
 
 - name: create user
   mysql_user: state=present name={{user}} password={{password}}
-
