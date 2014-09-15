@@ -1,45 +1,7 @@
 ---
-- name: Add host
-  shell: ssh-keyscan -H github.com >> /etc/ssh/ssh_known_hosts
-
-- name: Clone Repository
-  shell: git clone https://github.com/urakozz/php-precise-debs.git
-
-- name: Install libjson
-  shell: dpkg -i php-precise-debs/debs/ubuntu_12.04/libjson-c2/*.deb
-
-- name: Install libedit2
-  shell: dpkg -i php-precise-debs/debs/ubuntu_12.04/libedit2/*.deb
-
-- name: Install icu
-  shell: dpkg -i php-precise-debs/debs/ubuntu_12.04/icu/*.deb
-
-- name: Install libgd3
-  shell: dpkg -i php-precise-debs/debs/ubuntu_12.04/libgd3/libgd3*.deb
-
-- name: Install libgd-dev
-  shell: dpkg -i --auto-deconfigure php-precise-debs/debs/ubuntu_12.04/libgd3/libgd-dev*.deb
-  ignore_errors: yes
-
-- name: Install libgd2-xpm
-  shell: dpkg -i php-precise-debs/debs/ubuntu_12.04/libgd3/libgd2-xpm*.deb
-  ignore_errors: yes
-
-- name: Install libgd3 additions
-  shell: dpkg -i php-precise-debs/debs/ubuntu_12.04/libgd3/*.deb
-
-- name: Install libmemcached11
-  shell: dpkg -i  --auto-deconfigure php-precise-debs/debs/ubuntu_12.04/libmemcached11/*.deb
-  ignore_errors: yes
-
-- name: Install libmemcached11 Again
-  shell: dpkg -i  php-precise-debs/debs/ubuntu_12.04/libmemcached11/*.deb
-
-- name: Install gearman
-  shell: dpkg -i php-precise-debs/debs/ubuntu_12.04/gearman/*.deb
 
 - name: Install php5
-  shell: dpkg -i php-precise-debs/debs/ubuntu_12.04/{{item}}*.deb
+  apt: name={{item}}
   with_items:
     - php5-common
     - php5-json
@@ -48,14 +10,13 @@
     - php-pear
     - php5-dev
     - php5-fpm
-    - php5_5.5
-    - libphp5
     - php5-curl
     - php5-intl
-    - php5-mysql_
+    - php5-mysql
     - php5-readline
     - php5-gd
     - php5-memcached
+    - php5-memcache
     - php5-gearman
     - php5-redis
     - php5-mongo

@@ -8,27 +8,27 @@
 - name: Install Yandex Repos
   shell: echo '{{ item }}' >> /etc/apt/sources.list
   with_items:
-    - deb http://mirror.yandex.ru/ubuntu/ precise main restricted
-    - deb-src http://mirror.yandex.ru/ubuntu/ precise main restricted
-    - deb http://mirror.yandex.ru/ubuntu/ precise-updates main restricted
-    - deb-src http://mirror.yandex.ru/ubuntu/ precise-updates main restricted
-    - deb http://mirror.yandex.ru/ubuntu/ precise universe
-    - deb-src http://mirror.yandex.ru/ubuntu/ precise universe
-    - deb http://mirror.yandex.ru/ubuntu/ precise-updates universe
-    - deb-src http://mirror.yandex.ru/ubuntu/ precise-updates universe
-    - deb http://mirror.yandex.ru/ubuntu/ precise multiverse
-    - deb-src http://mirror.yandex.ru/ubuntu/ precise multiverse
-    - deb http://mirror.yandex.ru/ubuntu/ precise-updates multiverse
-    - deb-src http://mirror.yandex.ru/ubuntu/ precise-updates multiverse
-    - deb http://mirror.yandex.ru/ubuntu/ precise-backports main restricted universe multiverse
-    - deb-src http://mirror.yandex.ru/ubuntu/ precise-backports main restricted universe multiverse
+    - deb http://mirror.yandex.ru/ubuntu/ {{os_name}} main restricted
+    - deb-src http://mirror.yandex.ru/ubuntu/ {{os_name}} main restricted
+    - deb http://mirror.yandex.ru/ubuntu/ {{os_name}}-updates main restricted
+    - deb-src http://mirror.yandex.ru/ubuntu/ {{os_name}}-updates main restricted
+    - deb http://mirror.yandex.ru/ubuntu/ {{os_name}} universe
+    - deb-src http://mirror.yandex.ru/ubuntu/ {{os_name}} universe
+    - deb http://mirror.yandex.ru/ubuntu/ {{os_name}}-updates universe
+    - deb-src http://mirror.yandex.ru/ubuntu/ {{os_name}}-updates universe
+    - deb http://mirror.yandex.ru/ubuntu/ {{os_name}} multiverse
+    - deb-src http://mirror.yandex.ru/ubuntu/ {{os_name}} multiverse
+    - deb http://mirror.yandex.ru/ubuntu/ {{os_name}}-updates multiverse
+    - deb-src http://mirror.yandex.ru/ubuntu/ {{os_name}}-updates multiverse
+    - deb http://mirror.yandex.ru/ubuntu/ {{os_name}}-backports main restricted universe multiverse
+    - deb-src http://mirror.yandex.ru/ubuntu/ {{os_name}}-backports main restricted universe multiverse
 
-    - deb http://security.ubuntu.com/ubuntu precise-security main restricted
-    - deb-src http://security.ubuntu.com/ubuntu precise-security main restricted
-    - deb http://security.ubuntu.com/ubuntu precise-security universe
-    - deb-src http://security.ubuntu.com/ubuntu precise-security universe
-    - deb http://security.ubuntu.com/ubuntu precise-security multiverse
-    - deb-src http://security.ubuntu.com/ubuntu precise-security multiverse
+    - deb http://security.ubuntu.com/ubuntu {{os_name}}-security main restricted
+    - deb-src http://security.ubuntu.com/ubuntu {{os_name}}-security main restricted
+    - deb http://security.ubuntu.com/ubuntu {{os_name}}-security universe
+    - deb-src http://security.ubuntu.com/ubuntu {{os_name}}-security universe
+    - deb http://security.ubuntu.com/ubuntu {{os_name}}-security multiverse
+    - deb-src http://security.ubuntu.com/ubuntu {{os_name}}-security multiverse
 
 - name: Update apt
   apt: update_cache=yes
@@ -51,6 +51,14 @@
     - software-properties-common
     - python-apt
 
+- name: PHP PPA
+  apt_repository: repo='ppa:ondrej/php5-5.6'
+
+- name: Redis PPA
+  apt_repository: repo='ppa:chris-lea/redis-server'
+
+- name: Update apt
+  apt: update_cache=yes
 
 - name: install dependecies
   apt: pkg={{item}}
@@ -64,23 +72,17 @@
     - libvpx1
     - libgd2-xpm-dev
     - libgearman-dev
-    - libtiff4
-    - libtiff4-dev
     - libxt-dev
     - libvpx-dev
     - libsasl2-dev
     - gearman-tools
-    - libpq5
-    - libtokyocabinet8
-    - shtool
-    - libgcc1
     - memcached
+    - libmemcache0
     - autoconf
     - automake
-    - libtool
     - language-pack-de
     - language-pack-ru
-    - libpcre3-dev
+    - gearman-job-server
     
 
 - name: Install Extra Packages
