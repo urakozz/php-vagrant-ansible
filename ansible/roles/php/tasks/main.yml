@@ -16,6 +16,7 @@
     - php5-readline
     - php5-gd
     - php5-memcached
+    - php5-memcache
     - php5-gearman
     - php5-redis
     - php5-mongo
