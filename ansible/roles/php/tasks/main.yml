@@ -14,7 +14,6 @@
 - name: Install libgd3
   shell: dpkg -i debs/libgd2/libgd3*.deb
 
-
 - name: Install libmemcached11
   shell: dpkg -i --auto-deconfigure debs/libmemcached/{{item}}*.deb
   with_items:
@@ -24,6 +23,10 @@
     - libmemcachedutil2
     - libmemcached-dev
     - libmemcached-tools
+  ignore_errors: yes
+  
+  - name: Install libmemcached11
+  shell: dpkg -i debs/libmemcached/*.deb
 
 - name: Install gearman
   shell: dpkg -i debs/gearman/*.deb
