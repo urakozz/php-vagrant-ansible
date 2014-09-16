@@ -81,6 +81,10 @@
     - language-pack-de
     - language-pack-ru
     - libpcre3-dev
+    - libbsd-dev
+    - libicu-dev
+    - debhelper
+    - libxslt1.1
     
 
 - name: Install Extra Packages

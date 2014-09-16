@@ -1,60 +1,69 @@
 ---
-- name: Add host
-  shell: ssh-keyscan -H github.com >> /etc/ssh/ssh_known_hosts
+- name: Clone Repository
+  shell: git clone https://github.com/urakozz/php-5.6-precise-debs.git
 
 - name: Clone Repository
-  shell: git clone https://github.com/urakozz/php-precise-debs.git
+  shell: cp -R php-5.6-precise-debs debs
 
 - name: Install libjson
-  shell: dpkg -i php-precise-debs/debs/ubuntu_12.04/libjson-c2/*.deb
+  shell: dpkg -i debs/json-c/*.deb
 
 - name: Install libedit2
-  shell: dpkg -i php-precise-debs/debs/ubuntu_12.04/libedit2/*.deb
+  shell: dpkg -i debs/libedit/*.deb
 
 - name: Install icu
-  shell: dpkg -i php-precise-debs/debs/ubuntu_12.04/icu/*.deb
+  shell: dpkg -i debs/libicu52/*.deb
 
 - name: Install libgd3
-  shell: dpkg -i php-precise-debs/debs/ubuntu_12.04/libgd3/libgd3*.deb
+  shell: dpkg -i debs/libgd2/libgd3*.deb
 
 - name: Install libgd-dev
-  shell: dpkg -i --auto-deconfigure php-precise-debs/debs/ubuntu_12.04/libgd3/libgd-dev*.deb
+  shell: dpkg -i --auto-deconfigure debs/libgd2/libgd-dev*.deb
   ignore_errors: yes
 
 - name: Install libgd2-xpm
-  shell: dpkg -i php-precise-debs/debs/ubuntu_12.04/libgd3/libgd2-xpm*.deb
+  shell: dpkg -i debs/libgd3/libgd2-xpm*.deb
   ignore_errors: yes
 
 - name: Install libgd3 additions
-  shell: dpkg -i php-precise-debs/debs/ubuntu_12.04/libgd3/*.deb
+  shell: dpkg -i debs/libgd2/*.deb
 
 - name: Install libmemcached11
-  shell: dpkg -i  --auto-deconfigure php-precise-debs/debs/ubuntu_12.04/libmemcached11/*.deb
-  ignore_errors: yes
-
-- name: Install libmemcached11 Again
-  shell: dpkg -i  php-precise-debs/debs/ubuntu_12.04/libmemcached11/*.deb
+  shell: dpkg -i debs/libmemcached/{{item}}*.deb
+  with_items:
+    - libhashkit2
+    - libhashkit-dev
+    - libmemcached11
+    - libmemcachedutil2
+    - libmemcached-dev
+    - libmemcached-tools
 
 - name: Install gearman
-  shell: dpkg -i php-precise-debs/debs/ubuntu_12.04/gearman/*.deb
+  shell: dpkg -i debs/gearman/*.deb
 
 - name: Install php5
-  shell: dpkg -i php-precise-debs/debs/ubuntu_12.04/{{item}}*.deb
+  shell: dpkg -i debs/{{item}}*.deb
   with_items:
     - php5-common
+    - php5-dev
+    - dh-php5
     - php5-json
     - php5-cli
     - php5-cgi
+    - php5-gmp
     - php-pear
-    - php5-dev
-    - php5-fpm
-    - php5_5.5
+    - php5_5
     - libphp5
+    - php5-fpm
     - php5-curl
     - php5-intl
+    - php5-odbc
+    - php5-xsl
     - php5-mysql_
     - php5-readline
     - php5-gd
+    - php5-enchant
+    - php5-memcache
     - php5-memcached
     - php5-gearman
     - php5-redis
