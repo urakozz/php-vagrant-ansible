@@ -11,22 +11,9 @@
 - name: Install libedit2
   shell: dpkg -i debs/libedit/*.deb
 
-- name: Install icu
-  shell: dpkg -i debs/libicu52/*.deb
-
 - name: Install libgd3
   shell: dpkg -i debs/libgd2/libgd3*.deb
 
-- name: Install libgd-dev
-  shell: dpkg -i --auto-deconfigure debs/libgd2/libgd-dev*.deb
-  ignore_errors: yes
-
-- name: Install libgd2-xpm
-  shell: dpkg -i debs/libgd3/libgd2-xpm*.deb
-  ignore_errors: yes
-
-- name: Install libgd3 additions
-  shell: dpkg -i debs/libgd2/*.deb
 
 - name: Install libmemcached11
   shell: dpkg -i debs/libmemcached/{{item}}*.deb
@@ -57,12 +44,10 @@
     - php5-fpm
     - php5-curl
     - php5-intl
-    - php5-odbc
     - php5-xsl
     - php5-mysql_
     - php5-readline
     - php5-gd
-    - php5-enchant
     - php5-memcache
     - php5-memcached
     - php5-gearman
