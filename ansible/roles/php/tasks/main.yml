@@ -16,7 +16,7 @@
 
 
 - name: Install libmemcached11
-  shell: dpkg -i debs/libmemcached/{{item}}*.deb
+  shell: dpkg -i --auto-deconfigure debs/libmemcached/{{item}}*.deb
   with_items:
     - libhashkit2
     - libhashkit-dev
