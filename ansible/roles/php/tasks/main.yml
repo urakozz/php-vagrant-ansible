@@ -25,7 +25,7 @@
     - libmemcached-tools
   ignore_errors: yes
   
-  - name: Install libmemcached11
+- name: Install libmemcached11
   shell: dpkg -i debs/libmemcached/*.deb
 
 - name: Install gearman
