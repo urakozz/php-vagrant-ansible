@@ -50,6 +50,9 @@
     - python-software-properties
     - software-properties-common
     - python-apt
+    - git-svn
+    - subversion
+    - htop
 
 
 - name: install dependecies
@@ -80,12 +83,23 @@
     - libtool
     - language-pack-de
     - language-pack-ru
+    - language-pack-en
     - libpcre3-dev
     - libbsd-dev
     - libicu-dev
     - debhelper
     - libxslt1.1
+    - numactl
+    - libjemalloc1
+    - libevent-dev
+    - libmcrypt4
     
+
+- name: reconfigure Locales
+  shell: dpkg-reconfigure locales
+
+- name: Export Locale
+  shell: export LC_ALL="en_US.UTF-8"
 
 - name: Install Extra Packages
   apt: pkg={{ item }} state=latest
