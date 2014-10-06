@@ -56,6 +56,7 @@
     - php5-gearman
     - php5-redis
     - php5-mongo
+    - php5-v8js
 
 - name: php config updates
   shell: sed -i 's/{{item.search}}/{{item.replace}}/g' {{item.file}}
