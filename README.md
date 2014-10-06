@@ -6,7 +6,7 @@ PHP Ansible Vagrant
 Build of Ubuntu 12.04.4 with PHP 5.6.0 from .deb packages
 --------------------------------------------------------
 
-All .deb packages are there: [https://github.com/urakozz/php-precise-debs](https://github.com/urakozz/php-precise-debs)
+All .deb packages are there: [https://github.com/urakozz/php-5.0-precise-debs](https://github.com/urakozz/php-5.6-precise-debs)
 
 ## Installation
 
