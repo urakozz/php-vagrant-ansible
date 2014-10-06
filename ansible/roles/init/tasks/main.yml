@@ -93,6 +93,7 @@
     - libjemalloc1
     - libevent-dev
     - libmcrypt4
+    - libv8-dev
     
 
 - name: reconfigure Locales
